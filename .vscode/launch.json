@@ -1,0 +1,90 @@
+{
+    // Pick a configuration from the dropdown in the Run and Debug panel, then press ▶ (or F5).
+    // Breakpoints in your solution code (and the tests) will be hit.
+    // `python` points at the pipenv .venv; the `windows` block overrides it on Windows.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Tests: current problem",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "${fileDirname}"
+            ],
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "windows": {
+                "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+            }
+        },
+        {
+            "name": "Tests: choose problem…",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "${input:problem}"
+            ],
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "windows": {
+                "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+            }
+        },
+        {
+            "name": "Tests: all problems",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "args": [],
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "windows": {
+                "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+            }
+        },
+        {
+            "name": "Solutions: choose problem…",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "${input:problem}",
+                "--solutions"
+            ],
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "windows": {
+                "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "problem",
+            "type": "pickString",
+            "description": "Which problem's tests should run?",
+            "options": [
+                "01_log_parser",
+                "02_expense_report",
+                "03_nested_dicts",
+                "04_money_class",
+                "05_retry_decorator",
+                "06_lazy_iterators",
+                "07_context_managers",
+                "08_transactional_kv_store",
+                "09_rate_limiter",
+                "10_async_fetcher"
+            ]
+        }
+    ]
+}
